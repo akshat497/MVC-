@@ -1,0 +1,152 @@
+* {
+    margin: 0%;
+    padding: 0%;
+
+}
+
+.Signupbdy {
+
+    height: 100vh;
+    width: 100%;
+}
+
+.SignupMainHeading {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignupMainHeading h1 {
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    color: #D0A2F7;
+    font-size: 60px;
+    text-shadow: 0px 2px 5px #D0A2F7;
+}
+
+.SignupMain {
+    background-color:#ffffff ;
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Signup {
+    height: 900px;
+    width: 700px;
+    background-color:#ffffff;
+    border-radius: 60px;
+    box-shadow: 0px 2px 5px #D0A2F7;
+   
+}
+.Signup .signupheading{
+background-color: #ffffff;
+height: 100px;
+width: 80%;
+position: relative;
+top: 10px;
+left: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.Signup .signupheading h1{
+    font-size: 45px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-shadow: 0px 2px;
+    color: #D0A2F7;
+}
+.Signup .Signupform {
+    background-color: #ffffff;
+    position: relative;
+    top: 20px;
+    left: 130px;
+    height: 700px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Signup input {
+    width: 100%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 12px;
+    border: 0px;
+    box-shadow: 0px 2px 5px #D0A2F7;
+    position: relative;
+    left: 10px;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #D0A2F7;
+    padding-left: 15px;
+
+
+}
+
+.Signup input::placeholder {
+    color: #D0A2F7;
+}
+
+.Signup input:focus {
+    outline: none !important;
+    border: 2px solid #D0A2F7;
+}
+
+.Signup label {
+    position: relative;
+    left: 20px;
+    font-family: sans-serif;
+}
+
+.Signup label span {
+    font-size: 20px;
+}
+
+.Signup  button {
+    position: relative;
+    top: 30px;
+    left: 130px;
+    height: 50px;
+    width: 100px;
+    border-radius: 12px;
+    border: 1px;
+    box-shadow: 0px 2px 5px #ffffff;
+    background-color: #D0A2F7;
+    color: #ffffff;
+    font-family: sans-serif;
+    font: 10px;
+    text-transform: uppercase;
+}
+
+.Signup button:hover {
+    background-color: #ffffff;
+    color: #D0A2F7;
+    border: 2px solid #D0A2F7;
+}
+
+.Signup .signinsignup {
+    position: relative;
+    left: 140px;
+    top: 40px;
+}
+
+.Signup .signinsignup span {
+    font-family: sans-serif;
+    text-decoration: underline;
+    color: #D0A2F7;
+
+}
+
+.Signup .signinsignup span:hover {
+    cursor: pointer;
+}
