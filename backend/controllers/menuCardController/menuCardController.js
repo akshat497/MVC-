@@ -82,6 +82,20 @@ const menuCardController = {
     } catch (error) {
         return handleResponse(res, 500, null, error, null);
     }
+},
+fetchMenuCards: async (req, res) => {
+  try {
+     
+
+      const menuCard = await Menu.find({ userID: req.user._id});
+      if (!menuCard) {
+          return handleResponse(res, 404, null, "Menu card not found");
+      }
+     
+      return handleResponse(res, 200, "successfully", null, menuCard);
+  } catch (error) {
+      return handleResponse(res, 500, null, error, null);
+  }
 }
 
 };

@@ -1,0 +1,121 @@
+/* App.css */
+
+
+.header {
+    background-color: whitesmoke;
+    color: #343a40;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: whitesmoke;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    transition: 0.3s;
+    overflow-x: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color:#343a40;
+    display: block;
+    transition: 0.3s;
+    border-bottom: 1px solid #343a40;
+}
+
+.sidebar a:hover {
+    background-color: #343a40;
+    color: white;
+}
+
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 1;
+    color: white;
+}
+
+/* Sidebar open state */
+.sidebar.open {
+    left: 0;
+    margin-top: 5.5%;
+}
+
+.content.open {
+    margin-left: 250px;
+}
+
+.menu-btn.open {
+    left: 250px;
+}
+.profile-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  /* Profile Header */
+  .profile-header {
+    text-align: center;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .profile-name {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+
+  .profile-bio {
+    color: #555;
+  }
+
+  /* Profile Details */
+  .profile-details {
+    margin-top: 20px;
+  }
+
+  .detail {
+    margin-bottom: 10px;
+  }
+
+  .detail-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  /* Profile Bio Section */
+  .profile-bio-section {
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
