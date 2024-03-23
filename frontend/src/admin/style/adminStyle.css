@@ -119,3 +119,46 @@
   p {
     line-height: 1.6;
   }
+  .profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .profile-name {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .profile-bio {
+    color: #555;
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .detail {
+    margin-bottom: 10px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  

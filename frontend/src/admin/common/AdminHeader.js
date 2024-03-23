@@ -13,9 +13,9 @@ export const AdminHeader = () => {
 
     <div className="sidebar open">
         <a href="#">Dashboard</a>
-        <Link to="/homepage">Users</Link>
-        <Link to="/homepage/departments">Departments</Link>
-        <Link to="/homepage/profile">Profile</Link>
+        <Link to="/admin">Profile</Link>
+        <Link to="/admin/menucards">Menu</Link>
+        <Link to="/admin/addmenucards">Add </Link>
         <a href="#">Settings</a>
         {/* Add more links based on your requirements */}
     </div>

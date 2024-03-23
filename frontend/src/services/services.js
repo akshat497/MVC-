@@ -45,6 +45,8 @@ export const LoginUser = async (body) => {
         }
       }
       );
+      console.log(response.data)
+      localStorage.setItem("userdetails",response?.data?.data?._id)
       return response?.data;
     } catch (error) {
       alert(error?.response?.data?.message||error)
@@ -56,6 +58,23 @@ export const LoginUser = async (body) => {
   
     try {
       const response = await axios.get(process.env.REACT_APP_BASE_URL+`fetchMenuCards`,
+      {
+        headers:{
+          Authorization:localStorage.getItem("token")
+        }
+      }
+      );
+      return response?.data;
+    } catch (error) {
+      alert(error?.response?.data?.message||error)
+      
+    }
+  };
+
+  export const AddMenuCard = async (body) => {
+  
+    try {
+      const response = await axios.post(process.env.REACT_APP_BASE_URL+`addMenuCard`,body,
       {
         headers:{
           Authorization:localStorage.getItem("token")

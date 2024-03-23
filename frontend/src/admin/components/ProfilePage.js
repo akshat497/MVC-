@@ -3,59 +3,53 @@ import { FetchUser } from '../../services/services';
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState({
-    username: 'JohnDoe',
-    email: 'johndoe@example.com',
-    bio: 'Hello, I am John Doe.',
-    avatar: 'https://via.placeholder.com/150',
+    username: '',
+    email: '',
+    location: '',
+    avatar: '',
   });
-useEffect(async()=>{
-   const response=await FetchUser();
-   setProfile({
-    username:response?.data?.name,
-    email:response?.data?.email,
-   });
+  const fetchuserdetails=async()=>{
+    const response=await FetchUser();
+    const date=new Date(profile.createdAt).toLocaleDateString()
+    setProfile({
+     username:response?.data?.name,
+     email:response?.data?.email,
+     location:response?.data?.location,
+     createdAt:date
+    });
+  }
+useEffect(()=>{
+    fetchuserdetails()
 
 },[])
   return (
     <div className='content'>
-         <div className="profile" style={styles.container}>
-      <img src={profile.avatar} alt="Profile" style={styles.avatar} />
-      <h2 style={styles.username}>{profile.username}</h2>
-      <p style={styles.email}>{profile.email}</p>
-      <p style={styles.bio}>{profile.bio}</p>
+         <div className="profile-container">
+      <div className="profile-header">
+        <img src="profile-pic.jpg" alt="Profile" className="profile-image" />
+        <h1 className="profile-name">{profile.name}</h1>
+        <p className="profile-bio">{profile.bio}</p>
+      </div>
+      <div className="profile-details">
+        <div className="detail">
+          <span className="detail-label">Email:</span>
+          <span>{profile.email}</span>
+        </div>
+        <div className="detail">
+          <span className="detail-label">Location:</span>
+          <span>{profile.location}</span>
+        </div>
+        {/* <div className="detail">
+          <span className="detail-label">Skills:</span>
+          <span></span>
+        </div> */}
+      </div>
     </div>
     </div>
    
   );
 };
 
-const styles = {
-  container: {
-    textAlign: 'center',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    maxWidth: '300px',
-    margin: '0 auto',
-  },
-  avatar: {
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
-    marginBottom: '20px',
-  },
-  username: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    marginBottom: '10px',
-  },
-  email: {
-    fontSize: '16px',
-    marginBottom: '10px',
-  },
-  bio: {
-    fontSize: '16px',
-  },
-};
+
 
 export default ProfilePage;
