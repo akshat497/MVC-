@@ -3,11 +3,22 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const handleResponse = require("../services/handleResponse");
 const Menu = require("../../modals/menuCardModel");
-
+const fs =require("fs")
+const deleteImage = async (imagePath) => {
+  try {
+    await fs.promises.unlink(imagePath);
+    console.log('Image deleted successfully');
+  } catch (error) {
+    console.error(`Error deleting image: ${error}`);
+    return error
+   
+    // Handle error appropriately, such as logging or returning an error response
+  }
+};
 const menuCardController = {
   addMenuCard: async (req, res) => {
     try {
-      const { name, price, description, image, category } = req.body;
+      const { name, price, description, category } = req.body;
       // if (!name || !price || !description || !image || !category) {
       //   return handleResponse(res, 400, null, "field missing");
       // }
@@ -33,18 +44,20 @@ const menuCardController = {
   },
   deleteMenuCard: async (req, res) => {
     try {
-      const { _id } = req.body;
+      const { id } = req.params;
 
-      if (!_id) {
-        return handleResponse(res, 400, null, "Field '_id' missing");
+      if (!id) {
+        return handleResponse(res, 400, null, "Field 'id' missing");
       }
-      const menuCard = await Menu.findOne({ _id:_id ,userID:req.user._id});
+      const menuCard = await Menu.findOne({ _id:id ,userID:req.user._id});
 
       if (!menuCard) {
         return handleResponse(res, 404, null, "Menu card not found");
       }
-       
-      await Menu.findByIdAndDelete({ _id: _id ,userID:req.user._id}); // Use menuCardId for deletion
+      let ImageUrl = menuCard.image;
+       console.log(ImageUrl)
+       await deleteImage(ImageUrl);
+       await Menu.findByIdAndDelete({ _id: id ,userID:req.user._id}); // Use menuCardId for deletion
 
       return handleResponse(res, 200, "Menu card deleted successfully", null);
     } catch (error) {
@@ -67,13 +80,18 @@ const menuCardController = {
         }
 
         // Create an object with updated values
-        const updatedFields = {
+        var updatedFields = {
             image: image || menuCard.image, // Retain existing value if not provided
             description: description || menuCard.description,
             name: name || menuCard.name,
             price: price || menuCard.price,
             category: category || menuCard.category
         };
+        if(req?.file?.path){
+          updatedFields={
+            image:req?.file?.path
+          }
+        }
        
 
         // Update the menu card
