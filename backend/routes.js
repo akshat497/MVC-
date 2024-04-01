@@ -37,8 +37,10 @@ routes.get('/fetchuser',fetchUserDetails,userController.fetchUser)
 routes.post('/addMenuCard',fetchUserDetails,upload.single('image'),menuCardController.addMenuCard)
 routes.delete('/deleteMenuCard/:id',fetchUserDetails,menuCardController.deleteMenuCard)
 routes.put('/updateMenuCard/',fetchUserDetails,upload.single('image'),menuCardController.updateMenuCard)
-
 routes.get('/fetchMenuCards/',fetchUserDetails,menuCardController.fetchMenuCards)
+
+
+routes.get('/fetchAllMenuCards/:userId',menuCardController.fetchAllMenuCards)
 
 
 

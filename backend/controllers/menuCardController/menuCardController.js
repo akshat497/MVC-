@@ -115,6 +115,21 @@ fetchMenuCards: async (req, res) => {
   } catch (error) {
       return handleResponse(res, 500, null, error, null);
   }
+},
+fetchAllMenuCards: async (req, res) => {
+  try {
+     
+      const {userId}=req.params;
+      console.log(userId)
+      const menuCard = await Menu.find({ userID: userId});
+      if (!menuCard) {
+          return handleResponse(res, 404, null, "Menu card not found");
+      }
+     
+      return handleResponse(res, 200, "successfully", null, menuCard);
+  } catch (error) {
+      return handleResponse(res, 500, null, error, null);
+  }
 }
 
 };

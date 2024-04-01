@@ -7,6 +7,8 @@ import {
 
 export const MenuCards = () => {
   const [cards, setcards] = useState([]);
+  const [fakeCards, setfakeCards] = useState([]);
+  const [search, setsearch] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -27,6 +29,7 @@ export const MenuCards = () => {
 
     if (response.message === "successfully") {
       setcards(response?.data);
+      setfakeCards(response?.data)
     }
   };
   useEffect(() => {
@@ -57,9 +60,16 @@ export const MenuCards = () => {
       fetchMenuCards();
     }
   };
+  useEffect(()=>{
+   
+    const filteredOrders = fakeCards?.filter((item) => item?.name?.toLowerCase().includes(search)||item?.category?.toLowerCase().includes(search));
+    setcards(filteredOrders)
+  
+  },[search])
   return (
     <>
       <div className="content ">
+      <input type="search" onChange={(e)=>{setsearch(e.target.value.toLowerCase())}} placeholder="Search" value={search}/>
         <div>
           <div
             className="modal fade"
@@ -151,7 +161,7 @@ export const MenuCards = () => {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexWrap: "wrap", 
             justifyContent: "center",
           }}
         >
