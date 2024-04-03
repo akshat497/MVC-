@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export const ClientHeader = () => {
+export const UserHeader = () => {
   return (
     <>
   <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,7 +34,11 @@ export const ClientHeader = () => {
         </li>
       </ul>
       <form className="d-flex" role="search">
-      <div className='mx-2'>Cart</div>
+      <div className='mx-2'>
+      <Link to='/cart' style={{textDecoration:'none',color:'black'}}>
+      🛒
+      </Link>
+      </div>
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
        </form>
     </div>

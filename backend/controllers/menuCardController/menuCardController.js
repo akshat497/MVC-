@@ -66,7 +66,7 @@ const menuCardController = {
   },
   updateMenuCard: async (req, res) => {
     try {
-        const {_id, image, description, name, price, category} = req.body;
+        const {_id, description, name, price, category} = req.body;
         
         // Check if _id is provided
         if (!_id) {
@@ -81,16 +81,17 @@ const menuCardController = {
 
         // Create an object with updated values
         var updatedFields = {
-            image: image || menuCard.image, // Retain existing value if not provided
+            image:  req?.file?.path||menuCard.image , // Retain existing value if not provided
             description: description || menuCard.description,
             name: name || menuCard.name,
             price: price || menuCard.price,
             category: category || menuCard.category
         };
         if(req?.file?.path){
-          updatedFields={
-            image:req?.file?.path
-          }
+          // updatedFields={
+          //   image:req?.file?.path
+          // }
+          await deleteImage(menuCard.image)
         }
        
 

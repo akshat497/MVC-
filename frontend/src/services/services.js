@@ -63,7 +63,20 @@ export const LoginUser = async (body) => {
       
     }
   };
+  export const FetchAllMenuCards = async (userId) => {
+  
+    try {
+      const response = await axios.get(process.env.REACT_APP_BASE_URL+`fetchAllMenuCards/${userId}`,
+      
+      );
+      return response?.data;
+    } catch (error) {
+      alert(error?.response?.data?.message||error)
+      
+    }
+  };
 
+  
   export const AddMenuCard = async (body) => {
   
     try {
@@ -81,7 +94,6 @@ export const LoginUser = async (body) => {
     try {
       
       const response = await axiosInstance.delete(process.env.REACT_APP_BASE_URL+`deleteMenuCard/${id}`,
-      
       );
       
       return response?.data;
