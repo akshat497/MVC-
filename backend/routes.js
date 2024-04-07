@@ -27,6 +27,7 @@ const upload = multer({ storage: storage });
 const userController=require('./controllers/user/userController');
 const fetchUserDetails = require('./middlewares/fetchUserDetails');
 const menuCardController = require('./controllers/menuCardController/menuCardController');
+const orderController = require('./controllers/orderControllers/orderController');
 // routes.post('/register',userController.registeruser)
 //userRoutes
 routes.post('/register',userController.registerUser)
@@ -38,9 +39,10 @@ routes.post('/addMenuCard',fetchUserDetails,upload.single('image'),menuCardContr
 routes.delete('/deleteMenuCard/:id',fetchUserDetails,menuCardController.deleteMenuCard)
 routes.put('/updateMenuCard/',fetchUserDetails,upload.single('image'),menuCardController.updateMenuCard)
 routes.get('/fetchMenuCards/',fetchUserDetails,menuCardController.fetchMenuCards)
-
-
 routes.get('/fetchAllMenuCards/:userId',menuCardController.fetchAllMenuCards)
+//OrderRoutes
+routes.post('/createOrder',orderController.createOrder)
+routes.get('/getOrder',orderController.getOrders)
 
 
 
