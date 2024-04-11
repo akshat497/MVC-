@@ -16,7 +16,7 @@ export const AdminHeader = () => {
         <Link to="/admin">Profile</Link>
         <Link to="/admin/menucards">Menu</Link>
         <Link to="/admin/addmenucards">Add </Link>
-        <a href="#">Settings</a>
+        <Link to="/admin/orders">Orders</Link>
         {/* Add more links based on your requirements */}
     </div>
 

@@ -117,3 +117,14 @@ export const CreateOrder = async (body) => {
     alert(error?.response?.data?.message || error);
   }
 };
+export const FetchOrder = async () => {
+  try {
+    const response = await axiosInstance.get(
+      process.env.REACT_APP_BASE_URL + `getOrder`
+    );
+
+    return response?.data;
+  } catch (error) {
+    alert(error?.response?.data?.message || error);
+  }
+};

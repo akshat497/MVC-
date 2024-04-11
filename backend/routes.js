@@ -42,7 +42,7 @@ routes.get('/fetchMenuCards/',fetchUserDetails,menuCardController.fetchMenuCards
 routes.get('/fetchAllMenuCards/:userId',menuCardController.fetchAllMenuCards)
 //OrderRoutes
 routes.post('/createOrder',orderController.createOrder)
-routes.get('/getOrder',orderController.getOrders)
+routes.get('/getOrder',fetchUserDetails,orderController.getOrders)
 
 
 

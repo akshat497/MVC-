@@ -63,9 +63,9 @@ const orderController = {
   //   },
   getOrders: async (req, res) => {
     try {
-      const { userID } = req.body;
-      const customers = await Customer.find({ userID }).lean();
-      const orders = await Order.find({ userID });
+   
+      const customers = await Customer.find({userID: req.user._id} ).lean();
+      const orders = await Order.find( {userID:req.user._id} );
       //main loop
       const customerData = customers.map((items) => {
         //orders loop
