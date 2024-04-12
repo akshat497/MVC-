@@ -18,10 +18,7 @@ const OrderSchema = new mongoose.Schema({
   message: {
     type: String,
   },
-  items: {
-    type: Array,
-    require: true,
-  },
+ 
   createdAt: {
     type: Date,
     default: Date.now,

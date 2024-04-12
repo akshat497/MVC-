@@ -117,15 +117,15 @@ export const Orders = () => {
 //   ]
 
 const ExpandedComponent=({data})=>{
-    // console.log("data",data.data.orders[0].items)
+    console.log("data",data.orders[0].items)
     const columns = [
         {
             name: 'productId',
-            selector: row => row.productId,
+            selector: row => row.productID,
         },
         {
             name: 'quantity',
-            selector: row => row.quantity,
+            selector: row => row.Quantity,
         },
        
     ];
