@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FetchUser } from '../../services/services';
-
+import { increment, decrement} from "../../redux/counter/CounterSlice"
+import { useDispatch, useSelector } from 'react-redux';
 const ProfilePage = () => {
   const [profile, setProfile] = useState({
     username: '',
@@ -8,6 +9,9 @@ const ProfilePage = () => {
     location: '',
     avatar: '',
   });
+  // const count = useSelector((state) => state.counter.value);
+  const count=useSelector((state)=>state.counter.value)
+  const dispatch = useDispatch();
   const fetchuserdetails=async()=>{
     const response=await FetchUser();
     const date=new Date(profile.createdAt).toLocaleDateString()
@@ -24,6 +28,11 @@ useEffect(()=>{
 },[])
   return (
     <div className='content'>
+     <div className='content'>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+    </div>
          <div className="profile-container">
       <div className="profile-header">
         <img src="profile-pic.jpg" alt="Profile" className="profile-image" />
