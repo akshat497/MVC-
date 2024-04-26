@@ -3,14 +3,18 @@ import "../Css/Login.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../services/services';
 import { ClientHeader } from '../common/ClientHeader';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoginThunk } from '../redux/auth/AuthThunk';
 
 const Login = () => {
-    const navigate=useNavigate()
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const user=useSelector(state=>state.auth.user)
     const [Obj, SetObj] = useState({
         Username: "",
         Password: ""
     });
-
+  console.log(user)
     function set(event) {
         SetObj({ ...Obj, [event.target.name]: event.target.value });
     }
@@ -22,10 +26,15 @@ const Login = () => {
                 email: Obj.Username,
                 password: Obj.Password
             };
-         const response=   await LoginUser(body);
-         if(response?.message==="successfull"){
-            navigate('/admin',{state:response})
-         }
+            
+            dispatch(LoginThunk(body))
+        //  const response=   await LoginUser(body);
+        //  if(response?.message==="successfull"){
+        //     navigate('/admin',{state:response})
+        //  }
+        if(user!==null){
+            navigate('/admin',{state:user})
+        }
              
         } else {
             alert("Fields cannot be empty");
