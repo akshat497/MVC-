@@ -5,17 +5,16 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
     ref: "user",
   },
-  name:{
-    type:String,
-    required:true
+  name: {
+    type: String,
+    required: true,
   },
-  phone:{
-    type:String,
-    require:true
-
+  phone: {
+    type: String,
+    require: true,
   },
-  email:{
-    type:String
+  email: {
+    type: String,
   },
   createdAt: {
     type: Date,

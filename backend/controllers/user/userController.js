@@ -11,7 +11,7 @@ const handleResponse  = require('../services/handleResponse');
 const userController={
     registerUser:async(req,res)=>{
         const { name, email, location, password } = req.body;
-
+ console.log(req.body)
         // Check if required fields are missing
         if (!name || !email || !location || !password) {
             handleResponse(res,400,"Required fields are missing!")
