@@ -4,6 +4,7 @@ const cors = require('cors');
 const routes=express.Router();
 const multer =require('multer');
 const fs =require("fs")
+const { body, validationResult } = require("express-validator");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     console.log(file)
@@ -35,7 +36,14 @@ routes.post('/login',userController.login)
 routes.get('/fetchuser',fetchUserDetails,userController.fetchUser)
 
 //menuCardRoutes
-routes.post('/addMenuCard',fetchUserDetails,upload.single('image'),menuCardController.addMenuCard)
+routes.post('/addMenuCard',fetchUserDetails,upload.single('image'),[ body('name').notEmpty().withMessage('Name is required'),
+// Validate price
+body('price').notEmpty().withMessage('Price is required').isNumeric().withMessage('Price must be a number'),
+// Validate description
+body('description').notEmpty().withMessage('Description is required'),
+// Validate category
+body('category').notEmpty().withMessage('Category is required'),
+],menuCardController.addMenuCard)
 routes.delete('/deleteMenuCard/:id',fetchUserDetails,menuCardController.deleteMenuCard)
 routes.put('/updateMenuCard/',fetchUserDetails,upload.single('image'),menuCardController.updateMenuCard)
 routes.get('/fetchMenuCards/',fetchUserDetails,menuCardController.fetchMenuCards)

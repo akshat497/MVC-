@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const handleResponse = require("../services/handleResponse");
 const Menu = require("../../modals/menuCardModel");
 const fs =require("fs")
+const { body, validationResult } = require('express-validator');
+
 const deleteImage = async (imagePath) => {
   try {
     await fs.promises.unlink(imagePath);
@@ -16,12 +18,17 @@ const deleteImage = async (imagePath) => {
   }
 };
 const menuCardController = {
-  addMenuCard: async (req, res) => {
+  addMenuCard:
+   async (req, res) => {
     try {
       const { name, price, description, category } = req.body;
       // if (!name || !price || !description || !image || !category) {
       //   return handleResponse(res, 400, null, "field missing");
       // }
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
       console.log(req.file)
       const menucard = await Menu.create({
         userID: req.user._id,
@@ -39,9 +46,10 @@ const menuCardController = {
         // menucard
       );
     } catch (error) {
+      console.error('Error in addMenuCard:', error);
       return res.status(500).json({ msg: error });
     }
-  },
+  } ,
   deleteMenuCard: async (req, res) => {
     try {
       const { id } = req.params;
